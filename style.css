@@ -1,0 +1,280 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Karla", sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(90deg, #13151c, #002934);
+  text-align: center;
+}
+
+header h1 {
+  color: white;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  font-size: 2rem;
+}
+
+/* 4 section -> berjajar ke bawah */
+main {
+  display: grid;
+  grid-template-areas:
+    "add search tcomplete"
+    "fcomplete fcomplete tcomplete";
+  grid-template-columns: 1fr 2fr 1fr;
+  /* grid-template-rows: 250px; */
+  gap: 0.5rem;
+
+  padding: 4rem 6%;
+  height: 100%;
+  background-color: #fefefe;
+}
+
+section h2 {
+  border-radius: 3px;
+  padding: 0.2rem 1rem;
+  text-align: center;
+  font-weight: 500;
+
+  color: white;
+  margin-bottom: 8px;
+  box-shadow: 0 0.5px 2px rgba(0, 0, 0, 0.8);
+}
+
+section label {
+  font-weight: 500;
+}
+
+main section h3,
+main section p {
+  color: #484b48;
+}
+
+section:nth-child(1) {
+  grid-area: add;
+  height: 100%;
+}
+
+section:nth-child(1) h2 {
+  background-color: #1176d0;
+  line-height: 1;
+}
+
+section:nth-child(2) h2 {
+  background-color: #8d11d0;
+}
+
+section:nth-child(3) h2 {
+  background-color: #11d01d;
+}
+
+section:nth-child(4) h2 {
+  background-color: #ef1b1b;
+}
+
+section:nth-child(5) h2 {
+  background-color: #5b5d5b;
+}
+
+section input#bookFormTitle,
+section input#bookFormAuthor,
+section input#bookFormYear,
+section:nth-child(5) input {
+  width: 90%;
+  padding: 2px 4px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+section:nth-child(1) #bookForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section:nth-child(1) div,
+section:nth-child(5) div#editBook div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+section:nth-child(1) div:nth-child(4) {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  justify-content: space-evenly;
+}
+
+section button {
+  color: white;
+  background-color: rgba(0, 41, 52);
+  padding: 4px 10px;
+  border: none;
+
+  border-radius: 2px;
+}
+
+section:nth-child(1) button span {
+  color: #11d01d;
+}
+
+section #incompleteBookList button[data-testid="bookItemIsCompleteButton"] {
+  color: #f0321b;
+}
+
+section #completeBookList button[data-testid="bookItemIsCompleteButton"] {
+  color: #11d01d;
+}
+
+section:nth-child(1) button#bookFormSubmit {
+  width: 95%;
+}
+
+section:nth-child(2) {
+  grid-area: search;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+section:nth-child(2) form#searchBook {
+  display: flex;
+  justify-content: space-between;
+}
+
+section:nth-child(2) form#searchBook input#searchBookTitle {
+  width: 72%;
+  padding: 2px 4px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+section:nth-child(2) form#searchBook button#searchSubmit {
+  width: 16%;
+}
+
+section:nth-child(3) {
+  grid-area: fcomplete;
+  height: fit-content;
+}
+
+section:nth-child(4) {
+  grid-area: tcomplete;
+  height: fit-content;
+}
+
+section:nth-child(5) {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  display: none;
+}
+
+section:nth-child(5).active {
+  display: flex;
+}
+
+section:nth-child(5) h2 {
+  padding: 0.2rem 6rem;
+}
+
+section:nth-child(5) #editBook div#editButtons {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+section button:hover {
+  cursor: pointer;
+}
+
+#incompleteBookList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+#completeBookList {
+  display: grid;
+  gap: 0.5rem;
+}
+
+#editBookContainer {
+  width: fit-content;
+  height: fit-content;
+
+  margin: auto;
+  padding: 1rem;
+}
+
+#editBookContainer #editButtons {
+  margin-top: 6px;
+}
+
+section #bookForm,
+section #searchBook {
+  padding: 8px;
+  border: 0.5px solid rgba(0, 41, 52, 0.1);
+  box-shadow: 0 0.5px 2px rgba(0, 0, 0, 0.4);
+}
+
+div[data-testid="bookItem"],
+div#editBookContainer div#editBook {
+  border: 0.5px solid rgba(0, 41, 52, 0.1);
+  box-shadow: 0 0.5px 2px rgba(0, 0, 0, 0.4);
+  background-color: white;
+
+  padding: 8px;
+  border-radius: 3px;
+}
+
+div[data-testid="bookItem"] div {
+  padding: 6px 0;
+  display: flex;
+  gap: 4px;
+}
+
+div[data-testid="bookItem"] h3 {
+  font-size: 1.2rem;
+}
+
+div[data-testid="bookItem"] p[data-testid="bookItemAuthor"],
+div[data-testid="bookItem"] p[data-testid="bookItemYear"] {
+  font-size: 0.7rem;
+}
+
+/* Tab */
+@media screen and (max-width: 899px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "add search"
+      "fcomplete fcomplete"
+      "tcomplete tcomplete";
+  }
+}
+
+@media screen and (max-width: 576px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "add"
+      "search"
+      "fcomplete"
+      "tcomplete";
+  }
+
+  #incompleteBookList {
+    grid-template-columns: 1fr;
+  }
+}
